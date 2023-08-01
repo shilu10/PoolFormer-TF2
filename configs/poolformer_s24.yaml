@@ -1,0 +1,9 @@
+model_type: poolformer_s24
+depths: [4, 4, 12, 4]
+dims: [64, 128, 320, 512]
+block_norm: group_norm_1grp
+main_norm: layer_norm
+downsample_norm: null
+layer_scale_init_values: 1e-5 
+res_scale_init_values: null
+mlp_bias: true

@@ -1,0 +1,9 @@
+model_type: poolformer_m36
+depths: [6, 6, 18, 6]
+dims: [96, 192, 384, 768]
+block_norm: group_norm_1grp
+main_norm: layer_norm
+downsample_norm: null
+layer_scale_init_values: 1e-5 
+res_scale_init_values: null
+mlp_bias: true
