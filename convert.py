@@ -39,6 +39,7 @@ def port_weights(model_type="poolformer_s12",
     res_scale_init_values = (float(res_scale_init_values) 
                             if isinstance(res_scale_init_values, str) else res_scale_init_values)
 
+    print(data.get("downsample_norm") == None)
     tf_model = MetaFormer(
         depths = data.get('depths'),
         dims = data.get("dims"),
