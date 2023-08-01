@@ -1,9 +1,9 @@
 import tensorflow as tf 
 import numpy as np 
 from ..layers import Downsampling
-from .poolformer_block import MetaFormerBlock
+from .poolformer_block import PoolFormerBlock
 
-class MetaFormerStage(tf.keras.Model):
+class PoolFormerStage(tf.keras.Model):
 
     def __init__(
             self,
@@ -21,7 +21,7 @@ class MetaFormerStage(tf.keras.Model):
             res_scale_init_value=None,
             **kwargs,
     ):
-        super(MetaFormerStage, self).__init__(**kwargs)
+        super(PoolFormerStage, self).__init__(**kwargs)
 
         #self.grad_checkpointing = False
         self.use_nchw = True
