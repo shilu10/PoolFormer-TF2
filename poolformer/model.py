@@ -1,7 +1,7 @@
 import tensorflow as tf 
 import numpy as np 
-from .blocks import MetaFormerStage, Stem
-from .layers import norm_layer_factory, act_layer_factory
+from .blocks import MetaFormerStage 
+from .layers import norm_layer_factory, act_layer_factory, Stem
 from .layers import Pooling
 
 
