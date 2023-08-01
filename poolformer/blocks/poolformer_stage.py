@@ -25,6 +25,8 @@ class PoolFormerStage(tf.keras.Model):
 
         #self.grad_checkpointing = False
         self.use_nchw = True
+        self.in_chs = in_chs
+        self.out_chs = out_chs
 
         # don't downsample if in_chs and out_chs are the same
         self.downsample = tf.identity if in_chs == out_chs else Downsampling(
@@ -69,16 +71,8 @@ class PoolFormerStage(tf.keras.Model):
     def get_config(self):
         config = super(MetaFormerStage, self).get_config()
 
-        config["in_chs"] = in_chs
-        config['out_chs'] = out_chs
-        config['depth'] = depth
-        config['mlp_act'] = mlp_act
-        config['mlp_bias'] = mlp_bias
-        config['downsample_norm'] = downsample_norm
-        config['norm_layer'] = norm_layer
-        config['proj_drop'] = proj_drop
-        config['dp_rates'] = dp_rates
-        config['layer_scale_init_value'] = layer_scale_init_value
-        config['res_scale_init_value'] = res_scale_init_value
+        config["in_chs"] = self.in_chs
+        config['out_chs'] = self.out_chs
+        config["use_nchw"] = self.use_nchw
 
         return config

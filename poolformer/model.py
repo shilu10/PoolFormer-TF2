@@ -141,21 +141,8 @@ class PoolFormer(tf.keras.Model):
     def get_config(self):
         config = super(MetaFormer, self).get_config()
 
-        config["in_chans"] = in_chans
-        config["num_classes"] = num_classes
-        config["global_pool"] = global_pool
-        config["depths"] = depths
-        config["dims"] = dims 
-        config["mlp_act"] = mlp_act 
-        config["mlp_bias"] = mlp_bias
-        config["drop_path_rate"] = drop_path_rate
-        config["proj_drop_rate"] = proj_drop_rate
-        config["drop_rate"] = drop_rate
-        config["layer_scale_init_values"] = layer_scale_init_values
-        config["res_scale_init_values"] = res_scale_init_values
-        config["downsample_norm"] = downsample_norm
-        config["norm_layers"] = norm_layers
-        config["output_norm"] = output_norm
-        config["include_top"] = include_top
+        config["num_classes"] = self.num_classes
+        config["drop_rate"] = self.drop_rate
+        config["include_top"] = self.include_top
 
         return config

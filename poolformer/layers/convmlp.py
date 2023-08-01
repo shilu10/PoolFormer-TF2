@@ -24,6 +24,8 @@ class ConvMLP(tf.keras.layers.Layer):
         **kwargs,
     ):
         super(ConvMLP, self).__init__(**kwargs)
+        self.hidden_dim = hidden_dim
+        self.projection_dim = projection_dim
         act_layer = act_layer_factory(act_layer)
 
         self.fc1 = tf.keras.layers.Conv2D(
@@ -57,12 +59,7 @@ class ConvMLP(tf.keras.layers.Layer):
     def get_config(self):
         config = super(ConvMLP, self).get_config()
         
-        config["hidden_dim"] = hidden_dim
-        config["projection_dim"] = projection_dim
-        config["drop_rate"] = drop_rate
-        config["act_layer"] = act_layer
-        config["kernel_initializer"] = kernel_initializer
-        config["bias_initializer"] = bias_initializer
-        config["mlp_bias"] = mlp_bias
+        config["hidden_dim"] = self.hidden_dim
+        config["projection_dim"] = self.projection_dim
 
         return config
