@@ -105,3 +105,18 @@ class MetaFormerBlock(tf.keras.layers.Layer):
               trainable=True,
               name="layer_scale_2",
           )
+
+    def get_config(self):
+      config = super(MetaFormerBlock, self).get_config()
+
+      config['projection_dims'] = projection_dims
+      config['mlp_act'] = mlp_act
+      config['mlp_bias'] = mlp_bias 
+      config['norm_layer'] = norm_layer
+      config["proj_drop"] = proj_drop
+      config["drop_path"] = drop_path
+      config['use_nchw'] = use_nchw
+      config['layer_scale_init_value'] = layer_scale_init_value
+      config['res_scale_init_value'] = res_scale_init_value
+
+      return config

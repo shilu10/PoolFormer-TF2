@@ -53,3 +53,16 @@ class ConvMLP(tf.keras.layers.Layer):
         x = self.fc2(x)
         x = self.drop2(x, training=training)
         return x
+
+    def get_config(self):
+        config = super(ConvMLP, self).get_config()
+        
+        config["hidden_dim"] = hidden_dim
+        config["projection_dim"] = projection_dim
+        config["drop_rate"] = drop_rate
+        config["act_layer"] = act_layer
+        config["kernel_initializer"] = kernel_initializer
+        config["bias_initializer"] = bias_initializer
+        config["mlp_bias"] = mlp_bias
+
+        return config

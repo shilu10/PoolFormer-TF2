@@ -15,3 +15,10 @@ class Pooling(tf.keras.layers.Layer):
     def call(self, x):
         y = self.pool(x)
         return y - x
+
+    def get_config(self):
+        config = super(Pooling, self).get_config()
+
+        config["pool_size"] = pool_size
+
+        return config
