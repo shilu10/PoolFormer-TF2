@@ -1,1 +1,1 @@
-from .poolformer_stage import MetaFormerStage
+from .poolformer_stage import MetaFormerStage, MetaFormerBlock

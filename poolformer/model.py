@@ -82,8 +82,6 @@ class MetaFormer(tf.keras.Model):
             name="stem"
         )
 
-        print(self.stem, "stem")
-
         stages = []
         prev_dim = dims[0]
         dpr = np.linspace(0.0, drop_path_rate, sum(depths))
