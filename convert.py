@@ -122,7 +122,6 @@ def modify_metaformer_stage(stage, stage_indx, pt_model_dict):
   block_indx = 0
   for block in stage.layers:
     pt_block_name = f"stages.{stage_indx}.blocks.{block_indx}"
-    print(pt_block_name)
 
     if isinstance(block, MetaFormerBlock):
       # normalization
@@ -177,7 +176,6 @@ def modify_metaformer_stage(stage, stage_indx, pt_model_dict):
       block_indx += 1
 
     if isinstance(block, Downsampling):
-      print(f"stages.{stage_indx}.downsample.conv.weight")
       block.conv = modify_tf_block(
           tf_component = block.conv,
           pt_weight = pt_model_dict[f"stages.{stage_indx}.downsample.conv.weight"],
@@ -190,6 +188,7 @@ def modify_metaformer_stage(stage, stage_indx, pt_model_dict):
           #pt_bias = pt_model_dict[f"stages.{stage_indx}.downsample.norm.bias"]
       #)
      # block.norm.beta = None
+
 
 def make_model_res_file(fpath):
   with open(fpath, "w") as file:
