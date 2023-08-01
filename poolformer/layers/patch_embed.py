@@ -25,6 +25,7 @@ class Stem(tf.keras.layers.Layer):
     ):
         super(Stem, self).__init__(**kwargs)
         self.norm = norm_layer_factory(norm_layer)(name="stem_norm") if norm_layer is not None else tf.identity
+        print(self.norm, 'in stem')
         self.conv = tf.keras.layers.Conv2D(
             filters=out_channels,
             kernel_size=7,
