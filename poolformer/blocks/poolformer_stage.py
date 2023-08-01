@@ -37,7 +37,7 @@ class PoolFormerStage(tf.keras.Model):
             norm_layer=downsample_norm,
         )
 
-        self.blocks = ([MetaFormerBlock(
+        self.blocks = ([PoolFormerBlock(
             projection_dims=out_chs,
             token_mixer=token_mixer,
             mlp_act=mlp_act,
@@ -69,7 +69,7 @@ class PoolFormerStage(tf.keras.Model):
         return x
 
     def get_config(self):
-        config = super(MetaFormerStage, self).get_config()
+        config = super(PoolFormerStage, self).get_config()
 
         config["in_chs"] = self.in_chs
         config['out_chs'] = self.out_chs

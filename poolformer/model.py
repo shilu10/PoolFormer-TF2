@@ -88,7 +88,7 @@ class PoolFormer(tf.keras.Model):
         dp_rates = np.split(dpr, np.cumsum(depths))
 
         for i in range(self.num_stages):
-            stages += [MetaFormerStage(
+            stages += [PoolFormerStage(
                 prev_dim,
                 dims[i],
                 depth=depths[i],
@@ -139,7 +139,7 @@ class PoolFormer(tf.keras.Model):
         return x
 
     def get_config(self):
-        config = super(MetaFormer, self).get_config()
+        config = super(PoolFormer, self).get_config()
 
         config["num_classes"] = self.num_classes
         config["drop_rate"] = self.drop_rate
