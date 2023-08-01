@@ -52,7 +52,7 @@ class MetaFormer(tf.keras.Model):
             include_top=True,
             **kwargs,
     ):
-        super().__init__()
+        super(MetaFormer, self).__init__(**kwargs)
         self.num_classes = num_classes
         self.num_features = dims[-1]
         self.drop_rate = drop_rate
@@ -137,3 +137,25 @@ class MetaFormer(tf.keras.Model):
         x = self.forward_features(x)
         x = self.forward_head(x)
         return x
+
+    def get_config(self):
+        config = super(MetaFormer, self).get_config()
+
+        config["in_chans"] = in_chans
+        config["num_classes"] = num_classes
+        config["global_pool"] = global_pool
+        config["depths"] = depths
+        config["dims"] = dims 
+        config["mlp_act"] = mlp_act 
+        config["mlp_bias"] = mlp_bias
+        config["drop_path_rate"] = drop_path_rate
+        config["proj_drop_rate"] = proj_drop_rate
+        config["drop_rate"] = drop_rate
+        config["layer_scale_init_values"] = layer_scale_init_values
+        config["res_scale_init_values"] = res_scale_init_values
+        config["downsample_norm"] = downsample_norm
+        config["norm_layers"] = norm_layers
+        config["output_norm"] = output_norm
+        config["include_top"] = include_top
+
+        return config

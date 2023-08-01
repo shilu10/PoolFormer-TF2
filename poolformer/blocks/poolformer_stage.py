@@ -65,3 +65,20 @@ class MetaFormerStage(tf.keras.Model):
             x = x.transpose(1, 2).reshape(B, C, H, W)
 
         return x
+
+    def get_config(self):
+        config = super(MetaFormerStage, self).get_config()
+
+        config["in_chs"] = in_chs
+        config['out_chs'] = out_chs
+        config['depth'] = depth
+        config['mlp_act'] = mlp_act
+        config['mlp_bias'] = mlp_bias
+        config['downsample_norm'] = downsample_norm
+        config['norm_layer'] = norm_layer
+        config['proj_drop'] = proj_drop
+        config['dp_rates'] = dp_rates
+        config['layer_scale_init_value'] = layer_scale_init_value
+        config['res_scale_init_value'] = res_scale_init_value
+
+        return config

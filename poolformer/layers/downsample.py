@@ -32,3 +32,14 @@ class Downsampling(tf.keras.layers.Layer):
         x = self.norm(x)
         x = self.conv(x)
         return x
+
+    def get_config(self):
+        config = super(Downsampling, self).get_config()
+
+        config["hidden_dims"] = hidden_dims
+        config["kernel_size"] = kernel_size
+        config["strides"] = strides
+        config["padding"] = padding
+        config["norm_layer"] = norm_layer
+
+        return config
