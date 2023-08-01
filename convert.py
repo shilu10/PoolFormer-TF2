@@ -33,8 +33,11 @@ def port_weights(model_type="poolformer_s12",
     layer_scale_init_values = data.get("layer_scale_init_values")
     res_scale_init_values = data.get("res_scale_init_values")
 
-    layer_scale_init_values = int(layer_scale_init_values) if isinstance(layer_scale_init_values, str)
-    res_scale_init_values = int(res_scale_init_values) if isinstance(res_scale_init_values, str)
+    layer_scale_init_values = (int(layer_scale_init_values) 
+                            if isinstance(layer_scale_init_values, str) else layer_scale_init_values)
+
+    res_scale_init_values = (int(res_scale_init_values) 
+                            if isinstance(res_scale_init_values, str) else res_scale_init_values)
 
     tf_model = MetaFormer(
         depths = data.get('depths'),
@@ -115,7 +118,7 @@ def port_weights(model_type="poolformer_s12",
 
 
 def modify_metaformer_stage(stage, stage_indx, pt_model_dict):
-    
+
   block_indx = 0
   for block in stage.layers:
     pt_block_name = f"stages.{stage_indx}.blocks.{block_indx}"
