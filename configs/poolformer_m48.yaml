@@ -7,3 +7,4 @@ downsample_norm: null
 layer_scale_init_values: 1e-5 
 res_scale_init_values: null
 mlp_bias: true
+mlp_act: gelu
