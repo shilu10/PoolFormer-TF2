@@ -1,11 +1,11 @@
 import tensorflow as tf 
 import numpy as np 
-from .blocks import MetaFormerStage 
+from .blocks import PoolFormerStage 
 from .layers import norm_layer_factory, act_layer_factory, Stem
 from .layers import Pooling
 
 
-class MetaFormer(tf.keras.Model):
+class PoolFormer(tf.keras.Model):
     r""" MetaFormer
         A PyTorch impl of : `MetaFormer Baselines for Vision`  -
           https://arxiv.org/abs/2210.13452
@@ -52,7 +52,7 @@ class MetaFormer(tf.keras.Model):
             include_top=True,
             **kwargs,
     ):
-        super(MetaFormer, self).__init__(**kwargs)
+        super(PoolFormer, self).__init__(**kwargs)
         self.num_classes = num_classes
         self.num_features = dims[-1]
         self.drop_rate = drop_rate

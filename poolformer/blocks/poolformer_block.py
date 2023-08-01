@@ -4,7 +4,7 @@ from ..layers import DropPath, ConvMLP
 from ..layers import norm_layer_factory, act_layer_factory
 
 
-class MetaFormerBlock(tf.keras.layers.Layer):
+class PoolFormerBlock(tf.keras.layers.Layer):
     """
     Implementation of one MetaFormer block.
     """
@@ -23,7 +23,7 @@ class MetaFormerBlock(tf.keras.layers.Layer):
             res_scale_init_value=None,
             **kwargs
     ):
-        super(MetaFormerBlock, self).__init__(**kwargs)
+        super(PoolFormerBlock, self).__init__(**kwargs)
         self.projection_dims = projection_dims
         self.layer_scale_init_value = layer_scale_init_value
         self.res_scale_init_value = res_scale_init_value

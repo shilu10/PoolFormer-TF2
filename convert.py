@@ -1,5 +1,5 @@
 from .utils import modify_tf_block
-from .poolformer.model import MetaFormer
+from .poolformer.model import PoolFormer
 from .poolformer.layers import *
 from .poolformer.blocks import *
 import numpy as np 
@@ -39,7 +39,7 @@ def port_weights(model_type="poolformer_s12",
     res_scale_init_values = (float(res_scale_init_values) 
                             if isinstance(res_scale_init_values, str) else res_scale_init_values)
 
-    tf_model = MetaFormer(
+    tf_model = PoolFormer(
         depths = data.get('depths'),
         dims = data.get("dims"),
         norm_layers = data.get("block_norm"),
@@ -123,7 +123,7 @@ def modify_metaformer_stage(stage, stage_indx, pt_model_dict):
   for block in stage.layers:
     pt_block_name = f"stages.{stage_indx}.blocks.{block_indx}"
 
-    if isinstance(block, MetaFormerBlock):
+    if isinstance(block, PoolFormerBlock):
       # normalization
       block.norm1 = modify_tf_block(
           tf_component = block.norm1,
