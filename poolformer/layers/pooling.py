@@ -9,6 +9,7 @@ class Pooling(tf.keras.layers.Layer):
 
     def __init__(self, pool_size=3, **kwargs):
         super(Pooling, self).__init__(**kwargs)
+        self.pool_size = pool_size
         self.pool = tf.keras.layers.AveragePooling2D(
             pool_size, strides=1, padding="same")
 
@@ -19,6 +20,6 @@ class Pooling(tf.keras.layers.Layer):
     def get_config(self):
         config = super(Pooling, self).get_config()
 
-        config["pool_size"] = pool_size
+        config["pool_size"] = self.pool_size
 
         return config

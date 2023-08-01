@@ -24,6 +24,7 @@ class Stem(tf.keras.layers.Layer):
             **kwargs
     ):
         super(Stem, self).__init__(**kwargs)
+        self.out_channels = out_channels
         self.norm = norm_layer_factory(norm_layer)(name="stem_norm") if norm_layer is not None else tf.identity
         self.conv = tf.keras.layers.Conv2D(
             filters=out_channels,
@@ -37,3 +38,10 @@ class Stem(tf.keras.layers.Layer):
         x = self.conv(x)
         x = self.norm(x)
         return x
+
+    def get_config(self):
+        config = super(Stem, self).get_config()
+
+        config["out_channels"] = self.out_channels
+
+        return config

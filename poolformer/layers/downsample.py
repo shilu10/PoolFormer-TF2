@@ -16,7 +16,8 @@ class Downsampling(tf.keras.layers.Layer):
             norm_layer=None,
     ):
         super(Downsampling, self).__init__()
-        
+        self.hidden_dims = hidden_dims
+        self.kernel_size = kernel_size
         self.norm = norm_layer_factory(norm_layer)(name="downsample_norm") if norm_layer is not None else tf.identity
         
         self.norm_layer = norm_layer
@@ -38,8 +39,5 @@ class Downsampling(tf.keras.layers.Layer):
 
         config["hidden_dims"] = hidden_dims
         config["kernel_size"] = kernel_size
-        config["strides"] = strides
-        config["padding"] = padding
-        config["norm_layer"] = norm_layer
 
         return config
