@@ -107,7 +107,7 @@ class PoolFormerBlock(tf.keras.layers.Layer):
           )
 
     def get_config(self):
-      config = super(MetaFormerBlock, self).get_config()
+      config = super(PoolFormerBlock, self).get_config()
 
       config['projection_dims'] = self.projection_dims
       config['layer_scale_init_value'] = self.layer_scale_init_value

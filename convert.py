@@ -108,7 +108,7 @@ def port_weights(model_type="poolformer_s12",
 
     # for poolformer layers
     for idx, stage in enumerate(tf_model.layers[1: 1+len(data.get("depths"))]):
-        modify_metaformer_stage(stage, idx, pt_model_dict)
+        modify_poolformer_stage(stage, idx, pt_model_dict)
     
     save_path = os.path.join(model_savepath, model_type)
     save_path = f"{save_path}_fe" if not include_top else save_path
@@ -117,7 +117,7 @@ def port_weights(model_type="poolformer_s12",
     print(f"TensorFlow model serialized at: {save_path}...")
 
 
-def modify_metaformer_stage(stage, stage_indx, pt_model_dict):
+def modify_poolformer_stage(stage, stage_indx, pt_model_dict):
 
   block_indx = 0
   for block in stage.layers:
