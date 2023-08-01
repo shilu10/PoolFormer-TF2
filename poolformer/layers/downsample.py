@@ -37,7 +37,7 @@ class Downsampling(tf.keras.layers.Layer):
     def get_config(self):
         config = super(Downsampling, self).get_config()
 
-        config["hidden_dims"] = hidden_dims
-        config["kernel_size"] = kernel_size
+        config["hidden_dims"] = self.hidden_dims
+        config["kernel_size"] = self.kernel_size
 
         return config
